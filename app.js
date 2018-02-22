@@ -13,8 +13,11 @@ var project = require('./routes/project');
 // Example route
 // var user = require('./routes/user');
 
-var app = express();
+//added: viewAlt routes to controller in index, slide 29
+var viewAlt = require('./routes/index');
 
+var app = express();
+ 
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
@@ -40,6 +43,9 @@ app.get('/', index.view);
 app.get('/project/:id', project.view);
 // Example route
 // app.get('/users', user.list);
+
+//connects to index.viewAlt
+app.get('/viewAlt', index.viewAlt);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
